@@ -72,7 +72,7 @@ class UserManager
      * @param string $email
      * @param bool $active
      * @param bool $superadmin
-     * @return UserInterface
+     * @return User
      */
     public function create(
         string $username,
@@ -109,7 +109,7 @@ class UserManager
     }
 
     /**
-     * @return User|null
+     * @return User|string
      */
     public function getUser(): ?User
     {

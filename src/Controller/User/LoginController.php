@@ -12,6 +12,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Request\ParamFetcher;
 use Symfony\Component\HttpFoundation\Response;
 use Swagger\Annotations as SWG;
+use Symfony\Component\Validator\Constraints;
 
 /**
  * Class LoginController
