@@ -1,4 +1,6 @@
 {
+    "name": "akuchalskij/appservice-skeleton",
+    "description": "Appservice backend boilerplate",
     "type": "project",
     "license": "proprietary",
     "require": {
