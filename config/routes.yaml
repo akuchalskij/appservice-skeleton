@@ -1,16 +1,4 @@
-controllers:
-  resource: ../src/Controller/
+api_controllers:
+  resource: '../src/UI/Http/Rest/Controller/'
   type: annotation
   prefix: /api
-
-login_check:
-  path:     /api/user/login_check
-  methods:  [POST]
-
-api_login_check:
-  path: /api/user/login_check
-
-app.swagger_ui:
-  path: /api/doc
-  methods: GET
-  defaults: { _controller: nelmio_api_doc.controller.swagger_ui }

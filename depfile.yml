@@ -1,0 +1,24 @@
+paths:
+  - ./src
+exclude_files:
+layers:
+  - name: Domain
+    collectors:
+      - type: className
+        regex: Upservice\\Domain\\.*
+  - name: Application
+    collectors:
+      - type: className
+        regex: Upservice\\Application\\.*
+  - name: Infrastructure
+    collectors:
+      - type: className
+        regex: Upservice\\Infrastructure\\.*
+ruleset:
+  Domain:
+  Application:
+    - Domain
+    - Infrastructure
+  Infrastructure:
+    - Domain
+    - Application

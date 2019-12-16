@@ -1,25 +1,25 @@
 doctrine:
     dbal:
-        # configure these for your database server
-        driver: 'pdo_mysql'
-        server_version: '5.7'
-        charset: utf8mb4
-        default_table_options:
-            charset: utf8mb4
-            collate: utf8mb4_unicode_ci
-
-        url: '%env(resolve:DATABASE_URL)%'
+        driver:   pdo_pgsql
+        host:     "%env(DB_HOST)%"
+        port:     "%env(DB_PORT)%"
+        dbname:   "%env(DB_NAME)%"
+        user:     "%env(DB_USER)%"
+        password: "%env(DB_PASSWORD)%"
     orm:
-        auto_generate_proxy_classes: true
-        entity_managers:
-            default:
-                connection: default
-                naming_strategy: doctrine.orm.naming_strategy.underscore
-                auto_mapping: true
-                mappings:
-                    App:
-                        is_bundle: false
-                        type: annotation
-                        dir: '%kernel.project_dir%/src/Entity'
-                        prefix: 'App\Entity'
-                        alias: App
+        auto_generate_proxy_classes: '%kernel.debug%'
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+        mappings:
+            Domain:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/config/mapping/orm/domain'
+                prefix: 'Upservice\Domain'
+                alias: Domain
+            Projections:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/config/mapping/orm/projections'
+                prefix: 'Upservice\Infrastructure'
+                alias: Projections
