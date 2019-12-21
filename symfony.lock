@@ -1,4 +1,25 @@
 {
+    "beberlei/assert": {
+        "version": "v3.2.7"
+    },
+    "broadway/broadway": {
+        "version": "2.1.0"
+    },
+    "broadway/event-store-dbal": {
+        "version": "0.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "0.2",
+            "ref": "a8e44b60058a2798f65be93037aa1562f4de60eb"
+        },
+        "files": [
+            "config/packages/broadway_event_store_dbal.yaml"
+        ]
+    },
+    "broadway/uuid-generator": {
+        "version": "0.4.0"
+    },
     "composer/semver": {
         "version": "1.5.0"
     },
@@ -81,6 +102,9 @@
     "doctrine/reflection": {
         "version": "v1.0.0"
     },
+    "elasticsearch/elasticsearch": {
+        "version": "v7.5.0"
+    },
     "friendsofphp/php-cs-fixer": {
         "version": "2.2",
         "recipe": {
@@ -93,11 +117,56 @@
             ".php_cs.dist"
         ]
     },
+    "guzzlehttp/ringphp": {
+        "version": "1.1.1"
+    },
+    "guzzlehttp/streams": {
+        "version": "3.0.0"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "lcobucci/jwt": {
+        "version": "3.3.1"
+    },
+    "league/tactician": {
+        "version": "v1.0.3"
+    },
+    "league/tactician-bundle": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "222c3d39d38378bc6a9790a0b5baf841ba6679b9"
+        },
+        "files": [
+            "config/packages/league_tactician.yaml"
+        ]
+    },
+    "league/tactician-container": {
+        "version": "2.0.0"
+    },
+    "league/tactician-logger": {
+        "version": "v0.10.0"
+    },
+    "lexik/jwt-authentication-bundle": {
+        "version": "2.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.5",
+            "ref": "5b2157bcd5778166a5696e42f552ad36529a07a6"
+        },
+        "files": [
+            "config/packages/lexik_jwt_authentication.yaml"
+        ]
+    },
     "myclabs/deep-copy": {
         "version": "1.9.4"
+    },
+    "namshi/jose": {
+        "version": "7.2.3"
     },
     "nikic/php-parser": {
         "version": "v4.2.4"
@@ -176,6 +245,12 @@
     },
     "psr/log": {
         "version": "1.1.0"
+    },
+    "ramsey/uuid": {
+        "version": "3.9.2"
+    },
+    "react/promise": {
+        "version": "v2.7.1"
     },
     "sebastian/code-unit-reverse-lookup": {
         "version": "1.0.1"
@@ -322,6 +397,18 @@
     },
     "symfony/inflector": {
         "version": "v4.3.5"
+    },
+    "symfony/messenger": {
+        "version": "4.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.3",
+            "ref": "8a2675c061737658bed85102e9241c752620e575"
+        },
+        "files": [
+            "config/packages/messenger.yaml"
+        ]
     },
     "symfony/mime": {
         "version": "v4.3.5"

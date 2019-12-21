@@ -2,18 +2,62 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
 
-
 services:
   _defaults:
     autowire: true
     autoconfigure: true
+    public: false
+    bind:
+      $queryBus: '@tactician.commandbus.query'
+      $commandBus: '@tactician.commandbus.command'
+      $eventBus: '@broadway.event_handling.event_bus'
 
+      $eventStore: '@Broadway\EventStore\Dbal\DBALEventStore'
+
+
+  _instanceof:
+
+    Upservice\Application\Command\CommandHandlerInterface:
+      public: true
+      tags:
+        - { name: tactician.handler, typehints: true, bus: command }
+
+    Upservice\Application\Query\QueryHandlerInterface:
+      public: true
+      tags:
+        - { name: tactician.handler, typehints: true, bus: query }
+
+    Broadway\EventHandling\EventListener:
+      public: true
+      tags:
+        - { name: broadway.domain.event_listener }
 
   Upservice\:
     resource: '../src/*'
     exclude: '../src/**/{Migrations,EventSubscriber}'
 
+  ### Event Store
+  Broadway\EventStore\Dbal\DBALEventStore:
+    public: true
+    arguments:
+      - '@doctrine.dbal.default_connection'
+      - '@broadway.serializer.payload'
+      - '@broadway.serializer.metadata'
+      - 'events'
+      - true
+      - '@broadway.uuid.converter'
+
   ### UI
   Upservice\UI\Http\Rest\Controller\:
     resource: '../src/UI/Http/Rest/Controller/*'
     tags: [ 'controller.service_arguments' ]
+
+  ### UI Listeners
+
+  Upservice\UI\Http\Rest\EventSubscriber\ExceptionSubscriber:
+    tags:
+      - { name: 'kernel.event_listener', event: 'kernel.exception' }
+
+  Upservice\UI\Http\Rest\EventSubscriber\JsonBodyParserSubscriber:
+    tags:
+      - { name: 'kernel.event_listener', event: 'kernel.request', method: 'onKernelRequest', priority: 100 }
